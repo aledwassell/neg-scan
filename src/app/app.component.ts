@@ -1,18 +1,22 @@
-import {Component, ViewChild, ElementRef, EventEmitter} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, ContentChild, ElementRef, EventEmitter} from '@angular/core';
+
+import {UiComponent} from './ui/ui.component';
 
 @Component({
   selector: 'background-app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent {
-  @ViewChild('canvas')
-  canvas: ElementRef;
-  @ViewChild('button')
-  button: ElementRef<any>;
+export class AppComponent implements AfterViewInit {
+  @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild(UiComponent) ui: UiComponent;
   selectedFile: File = null;
   imagePath = null;
-  hrefLink = '';
+  dataURL = '';
+  constructor(){}
+  ngAfterViewInit(){
+    console.log(this.ui.downloadButton.nativeElement.href);
+  }
   onFileSelected(event){
     this.selectedFile = event.target.files[0];
     const fr = new FileReader();
@@ -26,11 +30,13 @@ export class AppComponent {
     img.onload = function(){
     ctx.drawImage(img,0,0); // Or at whatever offset you like
     };
-    var dataURL = canvas.toDataURL('image/png');
+    this.dataURL = canvas.toDataURL('image/jpeg');
     fr.onload = (evt) => {
       this.imagePath = evt.target.result;
       img.src = this.imagePath;
-      this.button.nativeElement.href = dataURL;
+      console.log(this.imagePath === this.dataURL);
+      console.log(this.imagePath);
+      console.log(this.dataURL);
     };
   }
     
