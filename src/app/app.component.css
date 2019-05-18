@@ -1,0 +1,11 @@
+canvas{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+app-ui, a{
+  top: calc((100vh - 100px) / 2);
+  left: calc((100vw - 100px) / 2);
+  position: absolute;
+  z-index: 2;
+}
