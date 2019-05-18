@@ -9,3 +9,7 @@ app-ui, a{
   position: absolute;
   z-index: 2;
 }
+
+button{
+  position: absolute;
+}

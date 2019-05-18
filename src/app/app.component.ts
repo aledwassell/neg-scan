@@ -28,16 +28,15 @@ export class AppComponent implements AfterViewInit {
     ctx.filter = 'grayscale(100%) invert(100%)';
     const img = new Image();
     img.onload = function(){
-    ctx.drawImage(img,0,0); // Or at whatever offset you like
+      ctx.drawImage(img,0,0); // Or at whatever offset you like
     };
-    this.dataURL = canvas.toDataURL('image/jpeg');
     fr.onload = (evt) => {
       this.imagePath = evt.target.result;
       img.src = this.imagePath;
-      console.log(this.imagePath === this.dataURL);
-      console.log(this.imagePath);
-      console.log(this.dataURL);
     };
   }
-    
+    dropData(){
+      const image = this.canvas.nativeElement.toDataURL("image/jpg");
+      console.log(image);
+    }
 }
