@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 
 @Component({
@@ -7,7 +7,7 @@ import {MatButtonModule, MatIconModule} from '@angular/material';
   styleUrls: ['./ui.component.css']
 })
 export class UiComponent {
-  @Input() photoName = '';
+  @Input() data = '';
   @Output() fileSelect = new EventEmitter<any>();
   @ViewChild('downloadButton') downloadButton: ElementRef;
   constructor() { }

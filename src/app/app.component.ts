@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild, ContentChild, ElementRef, EventEmitter} from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 
 import {UiComponent} from './ui/ui.component';
 
@@ -7,36 +7,28 @@ import {UiComponent} from './ui/ui.component';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   @ViewChild('canvas') canvas: ElementRef;
   @ViewChild(UiComponent) ui: UiComponent;
-  selectedFile: File = null;
-  imagePath = null;
-  dataURL = '';
+  image = '';
   constructor(){}
-  ngAfterViewInit(){
-    console.log(this.ui.downloadButton.nativeElement.href);
-  }
   onFileSelected(event){
-    this.selectedFile = event.target.files[0];
+    const canvas = this.canvas.nativeElement;
     const fr = new FileReader();
-    fr.readAsDataURL(this.selectedFile);
-    const canvas = this.canvas.nativeElement; 
-    const ctx = canvas.getContext('2d');
-    ctx.canvas.width  = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
-    ctx.filter = 'grayscale(100%) invert(100%)';
-    const img = new Image();
-    img.onload = function(){
-      ctx.drawImage(img,0,0); // Or at whatever offset you like
+    fr.readAsDataURL(event.target.files[0]);
+    const image = new Image();
+    image.onload = function(){
+      const ctx = canvas.getContext('2d');
+      ctx.canvas.width  = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
+      ctx.filter = 'grayscale(100%) invert(100%)';
+      ctx.drawImage(image,0,0);
     };
     fr.onload = (evt) => {
-      this.imagePath = evt.target.result;
-      img.src = this.imagePath;
+      image.src = evt.target.result;
     };
+    setTimeout(() => {
+      this.image = canvas.toDataURL("image/jpg");
+    }, 1000);
   }
-    dropData(){
-      const image = this.canvas.nativeElement.toDataURL("image/jpg");
-      console.log(image);
-    }
 }
