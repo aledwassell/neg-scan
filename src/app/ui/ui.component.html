@@ -7,4 +7,6 @@
 <button *ngIf="!photoName" mat-icon-button (click)="fileInput.click()">
   <mat-icon>add_a_photo</mat-icon>
 </button>
-<a *ngIf="data" [href]="data" #downloadButton download="test.jpeg">Download test test</a>
+<a mat-icon-button *ngIf="data" [href]="data" #downloadButton download="test.jpeg">
+  <mat-icon>save_alt</mat-icon>
+</a>
