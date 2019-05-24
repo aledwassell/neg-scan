@@ -10,25 +10,40 @@ import {UiComponent} from './ui/ui.component';
 export class AppComponent {
   @ViewChild('canvas') canvas: ElementRef;
   @ViewChild(UiComponent) ui: UiComponent;
-  image = '';
+  imageData = '';
   constructor(){}
-  onFileSelected(event){
-    const canvas = this.canvas.nativeElement;
-    const fr = new FileReader();
-    fr.readAsDataURL(event.target.files[0]);
-    const image = new Image();
-    image.onload = function(){
+
+  setUpCanvas(image: HTMLImageElement){
+      const canvas = this.canvas.nativeElement;
       const ctx = canvas.getContext('2d');
       ctx.canvas.width  = window.innerWidth;
       ctx.canvas.height = window.innerHeight;
       ctx.filter = 'grayscale(100%) invert(100%)';
       ctx.drawImage(image,0,0);
+  }
+
+  destroyCanvas(){
+
+  }
+
+  onFileSelected(event){
+    const canvas = this.canvas.nativeElement;
+    const fr = new FileReader();
+    fr.readAsDataURL(event.target.files[0]);
+    const image = new Image();
+    console.log(image.constructor);
+    image.onload = () => {
+      const ctx = canvas.getContext('2d');
+      ctx.canvas.width  = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
+      ctx.filter = 'grayscale(100%) invert(100%)';
+      ctx.drawImage(image, 0, 0, canvas.width, image.height);
     };
-    fr.onload = (evt) => {
-      image.src = evt.target.result;
+    fr.onload = (event) => {
+      image.src = event.target.result;
     };
     setTimeout(() => {
-      this.image = canvas.toDataURL("image/jpg");
+      this.imageData = canvas.toDataURL("image/jpg");
     }, 1000);
   }
 }
