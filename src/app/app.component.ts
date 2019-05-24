@@ -31,13 +31,15 @@ export class AppComponent {
     const fr = new FileReader();
     fr.readAsDataURL(event.target.files[0]);
     const image = new Image();
-    console.log(image.constructor);
     image.onload = () => {
       const ctx = canvas.getContext('2d');
       ctx.canvas.width  = window.innerWidth;
       ctx.canvas.height = window.innerHeight;
+      const x = (canvas.width / 2) - (image.width / 2);
+      const y = (canvas.height / 2) - (image.height / 2);
+      const w = image.width > canvas.width ? canvas.width : image.width;
       ctx.filter = 'grayscale(100%) invert(100%)';
-      ctx.drawImage(image, 0, 0, canvas.width, image.height);
+      ctx.drawImage(image, x, y, w, image.height);
     };
     fr.onload = (event) => {
       image.src = event.target.result;
