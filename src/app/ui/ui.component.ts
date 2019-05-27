@@ -9,6 +9,5 @@ import {MatButtonModule, MatIconModule} from '@angular/material';
 export class UiComponent {
   @Input() data = '';
   @Output() fileSelect = new EventEmitter<any>();
-  @ViewChild('downloadButton') downloadButton: ElementRef;
   constructor() { }
 }

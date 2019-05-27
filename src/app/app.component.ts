@@ -13,15 +13,6 @@ export class AppComponent {
   imageData = '';
   constructor(){}
 
-  setUpCanvas(image: HTMLImageElement){
-      const canvas = this.canvas.nativeElement;
-      const ctx = canvas.getContext('2d');
-      ctx.canvas.width  = window.innerWidth;
-      ctx.canvas.height = window.innerHeight;
-      ctx.filter = 'grayscale(100%) invert(100%)';
-      ctx.drawImage(image,0,0);
-  }
-
   destroyCanvas(){
 
   }
@@ -35,11 +26,13 @@ export class AppComponent {
       const ctx = canvas.getContext('2d');
       ctx.canvas.width  = window.innerWidth;
       ctx.canvas.height = window.innerHeight;
-      const x = (canvas.width / 2) - (image.width / 2);
-      const y = (canvas.height / 2) - (image.height / 2);
-      const w = image.width > canvas.width ? canvas.width : image.width;
+      const scale = Math.min(canvas.width / image.width, canvas.height / image.height);
+      const x = (canvas.width / 2) - (image.width / 2) * scale;
+      const y = (canvas.height / 2) - (image.height / 2) * scale;
+      const w = image.width * scale;
+      const h = image.height * scale;
       ctx.filter = 'grayscale(100%) invert(100%)';
-      ctx.drawImage(image, x, y, w, image.height);
+      ctx.drawImage(image, x, y, w, h);
     };
     fr.onload = (event) => {
       image.src = event.target.result;
