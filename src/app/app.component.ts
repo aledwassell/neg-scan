@@ -1,7 +1,7 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
-  selector: 'background-app',
+  selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })

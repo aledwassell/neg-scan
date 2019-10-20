@@ -29,6 +29,7 @@ export class VideoElementComponent implements OnInit {
   capture(){
     const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
+    ctx.filter = 'grayscale(100%) invert(100%)';
     ctx.drawImage(this.video, 0, 0, 200, 200);
   }
 
