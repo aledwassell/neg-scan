@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
-import {MatButtonModule, MatIconModule} from '@angular/material'
+import {MatButtonModule, MatIconModule, MatButtonToggleModule} from '@angular/material'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {UiComponent} from './ui/ui.component';
@@ -17,7 +17,9 @@ import {VideoElementComponent} from './video-element/video-element.component';
     FormsModule,
     FlexLayoutModule,
     MatButtonModule, 
-    MatIconModule],
+    MatIconModule,
+    MatButtonToggleModule,
+  ],
   declarations: [ AppComponent, UiComponent, ShareComponent, VideoElementComponent ],
   bootstrap:    [ AppComponent ]
 })
