@@ -1,4 +1,5 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
+import {FilmType} from './video-element/video-element.component';
 
 @Component({
   selector: 'app',
@@ -6,4 +7,5 @@ import {Component, ViewChild, ElementRef} from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent {
+  filmTypeEnum = FilmType;
 }

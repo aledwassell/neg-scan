@@ -5,3 +5,12 @@ app-ui{
   width: 100vw;
   z-index: 2;
 }
+
+div{
+  height: 100vh;
+}
+
+button{
+  position: absolute;
+  bottom: 15px;
+}
