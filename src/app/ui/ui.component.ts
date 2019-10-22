@@ -9,5 +9,8 @@ import {MatButtonModule, MatIconModule} from '@angular/material';
 export class UiComponent {
   @Input() data = '';
   @Output() fileSelect = new EventEmitter<any>();
+  @Output() capture = new EventEmitter<any>();
+  @Output() clear = new EventEmitter<any>();
+
   constructor() { }
 }

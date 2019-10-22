@@ -1,7 +1,4 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <video-element #videoElement [type]="filmTypeEnum.COLOR" fxLayout="column"></video-element>
-  <button mat-icon-button (click)="videoElement.capture()">
-    <mat-icon>camera_alt</mat-icon>
-  </button>
-  <!-- <app-ui [data]="imageData" (fileSelect)="onFileSelected($event)"></app-ui> -->
+  <app-ui (capture)="videoElement.capture()"></app-ui>
 </div>

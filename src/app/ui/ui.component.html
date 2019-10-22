@@ -1,4 +1,4 @@
-<input
+<!-- <input
   #fileInput type="file"
   accept="image/*"
   capture="camera"
@@ -9,5 +9,11 @@
 </button>
 <a mat-icon-button *ngIf="data" [href]="data" download="test.jpeg">
   <mat-icon>save_alt</mat-icon>
-</a>
-<app-share></app-share>
+</a> -->
+<button mat-icon-button (click)="capture.emit()">
+  <mat-icon>camera_alt</mat-icon>
+</button>
+<button mat-icon-button (click)="clear.emit()">
+  <mat-icon>refresh</mat-icon>
+</button>
+<!-- <app-share></app-share> -->
