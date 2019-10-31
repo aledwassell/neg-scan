@@ -6,9 +6,9 @@ interface VideoConfig {
 }
 
 export enum FilmType {
-  BW = "grayscale(100%) invert(100%)",
-  COLOR = "invert(100%)",
-  REVERSAL = "",
+  bw = "grayscale(100%) invert(100%)",
+  color = "invert(100%)",
+  reversal = "",
 }
 
 @Component({

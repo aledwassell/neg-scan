@@ -1,4 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-  <video-element #videoElement [type]="filmTypeEnum.REVERSAL" fxLayout="column"></video-element>
-  <app-ui (capture)="videoElement.capture()" (clear)="videoElement.clear()"></app-ui>
+  <video-element #videoElement [type]="filmType" fxLayout="column"></video-element>
+  <app-ui (capture)="videoElement.capture()" (clear)="videoElement.clear()"
+    (filmType)="filmTypeChange($event)"></app-ui>
 </div>

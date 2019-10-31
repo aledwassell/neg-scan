@@ -7,5 +7,8 @@ import {FilmType} from './video-element/video-element.component';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent {
-  filmTypeEnum = FilmType;
+  filmType = '';
+  filmTypeChange(e: FilmType){
+    this.filmType = e;
+  }
 }

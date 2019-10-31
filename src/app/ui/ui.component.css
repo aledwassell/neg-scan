@@ -1,3 +1,7 @@
 input{
   display: none;
 }
+
+.mat-button-toggle-group.button{
+  background: green;
+}

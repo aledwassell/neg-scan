@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {MatButtonModule, MatIconModule} from '@angular/material';
+import {FilmType} from '../video-element/video-element.component';
 
 @Component({
   selector: 'app-ui',
@@ -9,8 +10,8 @@ import {MatButtonModule, MatIconModule} from '@angular/material';
 export class UiComponent {
   @Input() data = '';
   @Output() fileSelect = new EventEmitter<any>();
-  @Output() capture = new EventEmitter<any>();
-  @Output() clear = new EventEmitter<any>();
-
-  constructor() { }
+  @Output() capture = new EventEmitter();
+  @Output() clear = new EventEmitter();
+  @Output() filmType = new EventEmitter<string>();
+  filmTypes = FilmType;
 }

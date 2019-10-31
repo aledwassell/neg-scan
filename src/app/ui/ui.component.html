@@ -16,9 +16,8 @@
 <button mat-icon-button (click)="clear.emit()">
   <mat-icon>refresh</mat-icon>
 </button>
-<mat-button-toggle-group name="filmType" aria-label="Film Type">
-  <mat-button-toggle value="bold">Bold</mat-button-toggle>
-  <mat-button-toggle value="italic">Italic</mat-button-toggle>
-  <mat-button-toggle value="underline">Underline</mat-button-toggle>
+<mat-button-toggle-group aria-label="Font Style" (change)="filmType.emit($event.value)">
+  <mat-button-toggle *ngFor="let item of filmTypes | keyvalue"
+  [value]="item.value" [class]="key">{{item.key}}</mat-button-toggle>
 </mat-button-toggle-group>
 <!-- <app-share></app-share> -->
