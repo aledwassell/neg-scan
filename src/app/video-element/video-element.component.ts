@@ -22,6 +22,7 @@ export class VideoElementComponent implements OnInit {
   private ctx;
   video: any;
   stream: any;
+  data: string;
 
   ngOnInit() {
     this.video = this.videoElement.nativeElement;
@@ -33,13 +34,13 @@ export class VideoElementComponent implements OnInit {
   }
 
   capture(type: string){
-    console.log(type);
     const canvas = this.canvas.nativeElement;
     this.ctx = canvas.getContext('2d');
     this.ctx.canvas.width = this.video.videoWidth;
     this.ctx.canvas.height = this.video.videoHeight;
     this.ctx.filter = type;
     this.ctx.drawImage(this.video, 0, 0, this.video.videoWidth, this.video.videoHeight);
+    this.data = canvas.toDataURL();
   }
 
   clear(){

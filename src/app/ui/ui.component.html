@@ -12,11 +12,13 @@
 </a> -->
 <div fxLayout="row" fxLayoutAlign="space-between">
   <button mat-fab color="white" (click)="clear.emit()"><mat-icon>refresh</mat-icon></button>
-  <button mat-fab color="white" (click)="drawer.toggle()"><mat-icon>share</mat-icon></button>
+  <button mat-fab color="white" [disabled]="!data" (click)="drawer.toggle()"><mat-icon>share</mat-icon></button>
 </div>
 <mat-drawer-container class="sidenav-container" autosize>
   <mat-drawer #drawer class="sidenav-drawer" mode="side" position="end">
-    <button mat-fab color="white" (click)="drawer.toggle()"><mat-icon>save</mat-icon></button>
+    <a mat-fab color="white" (click)="drawer.toggle()" [href]="data" download="neg-scan-image.jpeg">
+      <mat-icon>save</mat-icon>
+    </a>
   </mat-drawer>
 </mat-drawer-container>
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
