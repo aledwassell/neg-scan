@@ -10,14 +10,15 @@
 <a mat-icon-button *ngIf="data" [href]="data" download="test.jpeg">
   <mat-icon>save_alt</mat-icon>
 </a> -->
-<button mat-icon-button (click)="capture.emit()">
-  <mat-icon>camera_alt</mat-icon>
-</button>
-<button mat-icon-button (click)="clear.emit()">
-  <mat-icon>refresh</mat-icon>
-</button>
-<mat-button-toggle-group aria-label="Font Style" (change)="filmType.emit($event.value)">
-  <mat-button-toggle *ngFor="let item of filmTypes | keyvalue"
-  [value]="item.value" [class]="key">{{item.key}}</mat-button-toggle>
-</mat-button-toggle-group>
-<!-- <app-share></app-share> -->
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <button mat-fab color="white" (click)="clear.emit()"><mat-icon>refresh</mat-icon></button>
+  <button mat-fab color="white" (click)="drawer.toggle()"><mat-icon>share</mat-icon></button>
+</div>
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #drawer class="sidenav-drawer" mode="side" position="end">
+    <button mat-fab color="white" (click)="drawer.toggle()"><mat-icon>save</mat-icon></button>
+  </mat-drawer>
+</mat-drawer-container>
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <button color="white" mat-fab *ngFor="let item of filmTypes | keyvalue" [ngClass]="item.key" (click)="capture.emit(item.value)">{{item.key}}</button>
+</div>

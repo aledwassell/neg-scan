@@ -19,11 +19,9 @@ export enum FilmType {
 export class VideoElementComponent implements OnInit {
   @ViewChild('videoElement') videoElement: ElementRef;
   @ViewChild('canvas') canvas: ElementRef;
-  @Input() type: FilmType = FilmType.REVERSAL;
   private ctx;
   video: any;
   stream: any;
-  imageData = '';
 
   ngOnInit() {
     this.video = this.videoElement.nativeElement;
@@ -34,17 +32,20 @@ export class VideoElementComponent implements OnInit {
     this.initCamera({video: { facingMode: "environment"}, audio: false});
   }
 
-  capture(){
+  capture(type: string){
+    console.log(type);
     const canvas = this.canvas.nativeElement;
     this.ctx = canvas.getContext('2d');
     this.ctx.canvas.width = this.video.videoWidth;
     this.ctx.canvas.height = this.video.videoHeight;
-    this.ctx.filter = this.type;
+    this.ctx.filter = type;
     this.ctx.drawImage(this.video, 0, 0, this.video.videoWidth, this.video.videoHeight);
   }
 
   clear(){
-    this.ctx.clearRect(0, 0, this.video.videoWidth, this.video.videoHeight);
+    if(this.ctx){
+      this.ctx.clearRect(0, 0, this.video.videoWidth, this.video.videoHeight);
+    }
   }
 
   async initCamera(constraints: VideoConfig) {

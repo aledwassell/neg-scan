@@ -1,5 +1,4 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-  <video-element #videoElement [type]="filmType" fxLayout="column"></video-element>
-  <app-ui (capture)="videoElement.capture()" (clear)="videoElement.clear()"
-    (filmType)="filmTypeChange($event)"></app-ui>
+  <video-element #videoElement fxLayout="column"></video-element>
+  <ui fxLayout="column" fxLayoutAlign="space-between center" (capture)="videoElement.capture($event)" (clear)="videoElement.clear()"></ui>
 </div>
