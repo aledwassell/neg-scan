@@ -6,9 +6,4 @@ import {FilmType} from './video-element/video-element.component';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent {
-  filmType = '';
-  filmTypeChange(e: FilmType){
-    this.filmType = e;
-  }
-}
+export class AppComponent {}

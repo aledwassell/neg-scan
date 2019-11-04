@@ -26,19 +26,15 @@ export class VideoElementComponent implements OnInit {
 
   ngOnInit() {
     this.video = this.videoElement.nativeElement;
-    this.start();
-  }
-
-  private start(){
     this.initCamera({video: { facingMode: "environment"}, audio: false});
   }
 
-  capture(type: string){
+  capture(){
     const canvas = this.canvas.nativeElement;
     this.ctx = canvas.getContext('2d');
     this.ctx.canvas.width = this.video.videoWidth;
     this.ctx.canvas.height = this.video.videoHeight;
-    this.ctx.filter = type;
+    this.ctx.filter = this.videoElement.nativeElement.style.filter;
     this.ctx.drawImage(this.video, 0, 0, this.video.videoWidth, this.video.videoHeight);
     this.data = canvas.toDataURL();
   }

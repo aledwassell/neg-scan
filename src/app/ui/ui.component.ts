@@ -12,5 +12,6 @@ export class UiComponent {
   @Output() fileSelect = new EventEmitter<any>();
   @Output() capture = new EventEmitter<string>();
   @Output() clear = new EventEmitter();
+  @Output() type = new EventEmitter<string>();
   filmTypes = FilmType;
 }
