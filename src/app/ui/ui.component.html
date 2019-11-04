@@ -11,14 +11,13 @@
   <mat-icon>save_alt</mat-icon>
 </a> -->
 <div fxLayout="row" fxLayoutAlign="space-between">
-  <button mat-fab color="white" (click)="clear.emit()"><mat-icon>refresh</mat-icon></button>
-  <a mat-fab color="white" [disabled]="!data" (click)="drawer.toggle()" [href]="data" download="neg-scan-image.jpeg">
+  <a mat-fab color="white" [disabled]="!data" (click)="drawer.toggle()" [href]="data"   download="neg-scan-image.jpeg">
     <mat-icon>save</mat-icon>
   </a>
 </div>
 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
   <button color="white" mat-fab (click)="capture.emit()"><mat-icon>lense</mat-icon></button>
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle color="white" *ngFor="let item of filmTypes | keyvalue" (click)="type.emit(item.value); clear.emit()" [ngClass]="item.key">{{item.key}}</mat-button-toggle>
+    <mat-button-toggle color="white" *ngFor="let item of filmTypes | keyvalue" (click)="type.emit(item.value); clear.emit(); data = ''" [ngClass]="item.key">{{item.key}}</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
