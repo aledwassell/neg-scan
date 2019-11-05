@@ -1,16 +1,4 @@
-<!-- <input
-  #fileInput type="file"
-  accept="image/*"
-  capture="camera"
-  (change)="fileSelect.emit($event)"
->
-<button *ngIf="!photoName" mat-icon-button (click)="fileInput.click()">
-  <mat-icon>add_a_photo</mat-icon>
-</button>
-<a mat-icon-button *ngIf="data" [href]="data" download="test.jpeg">
-  <mat-icon>save_alt</mat-icon>
-</a> -->
-<div fxLayout="row" fxLayoutAlign="space-between">
+<div fxLayout="row" fxLayoutAlign="end">
   <a mat-fab color="white" [disabled]="!data" (click)="drawer.toggle()" [href]="data"   download="neg-scan-image.jpeg">
     <mat-icon>save</mat-icon>
   </a>
