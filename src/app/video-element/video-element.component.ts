@@ -45,12 +45,14 @@ export class VideoElementComponent implements OnInit {
     }
   }
 
-  async initCamera(constraints: VideoConfig) {
-    const nav = from(navigator.mediaDevices.getUserMedia(constraints));
-    nav.subscribe(x => this.video.srcObject = x);
-    this.video.play();
-    // catch(err) {
-    //   console.error(err);
-    // }
+  initCamera(constraints: VideoConfig) {
+    from(navigator.mediaDevices.getUserMedia(constraints))
+    .subscribe(
+      stream => {
+        this.video.srcObject = stream;
+        this.video.play();
+      },
+      error => console.log,
+    );
   }
 }
