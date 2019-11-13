@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {of} from 'rxjs';
 
 interface VideoConfig {
   video: {facingMode: string};
@@ -20,9 +21,8 @@ export class VideoElementComponent implements OnInit {
   @ViewChild('videoElement') videoElement: ElementRef;
   @ViewChild('canvas') canvas: ElementRef;
   private ctx;
-  video: any;
-  stream: any;
-  data: string;
+  private video: any;
+  private data: string;
 
   ngOnInit() {
     this.video = this.videoElement.nativeElement;
@@ -47,8 +47,8 @@ export class VideoElementComponent implements OnInit {
 
   async initCamera(constraints: VideoConfig) {
     try {
-      this.stream = await navigator.mediaDevices.getUserMedia(constraints);
-      this.video.srcObject = this.stream;
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      this.video.srcObject = stream;
       this.video.play();
     } catch(err) {
       console.error(err);
