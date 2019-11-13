@@ -1,8 +1,6 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-  <video-element #videoElement fxLayout="column"></video-element>
-  <ui fxLayout="column" fxLayoutAlign="space-between center" 
+<video-element #videoElement fxLayout="column"></video-element>
+<ui fxLayout="column" fxLayoutAlign="space-between center" 
   [data]="videoElement.data" 
   (capture)="videoElement.capture($event)" 
   (type)="videoElement.videoElement.nativeElement.style.filter = $event" 
   (clear)="videoElement.clear()"></ui>
-</div>
