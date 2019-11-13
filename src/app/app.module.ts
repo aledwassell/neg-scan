@@ -12,7 +12,7 @@ import {UiComponent} from './ui/ui.component';
 import {ShareComponent} from './ui/share/share.component';
 import {VideoElementComponent} from './video-element/video-element.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+// import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { environment } from '../environments/environment';
     MatIconModule,
     MatRippleModule,
     MatButtonToggleModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   declarations: [ AppComponent, UiComponent, ShareComponent, VideoElementComponent ],
   bootstrap:    [ AppComponent ]
